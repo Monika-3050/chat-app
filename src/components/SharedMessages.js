@@ -75,7 +75,7 @@ const SharedMessages = () => {
             overflowY: "scroll",
           }}
           p={3}
-          spacing={value===1 ? 1:3}
+          spacing={value === 1 ? 1 : 3}
         >
           {(() => {
             switch (value) {
@@ -84,22 +84,24 @@ const SharedMessages = () => {
                 return (
                   <Grid container spacing={2}>
                     {[0, 1, 2, 3, 4, 5, 6].map((el) => {
-                      return <Grid item xs={4}>
-                        <img
-                          src={faker.image.avatar()}
-                          alt={faker.name.fullName()}
-                        />
-                      </Grid>;
+                      return (
+                        <Grid item xs={4}>
+                          <img
+                            src={faker.image.avatar()}
+                            alt={faker.name.fullName()}
+                          />
+                        </Grid>
+                      );
                     })}
                   </Grid>
                 );
 
               case 1:
                 //links
-                return SHARED_LINKS.map((el)=><LinkMsg el={el}/>)
+                return SHARED_LINKS.map((el) => <LinkMsg el={el} />);
               case 2:
                 //docs
-                return SHARED_DOCS.map((el)=><DocMsg el={el}/>)
+                return SHARED_DOCS.map((el) => <DocMsg el={el} />);
 
               default:
                 break;

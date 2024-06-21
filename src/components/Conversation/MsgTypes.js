@@ -1,164 +1,235 @@
-import React from 'react';
-import { useTheme } from '@mui/material/styles';
-import { Box, Divider, IconButton, Link, Menu, MenuItem, Stack, Typography } from '@mui/material';
-import { DotsThreeVertical, DownloadSimple, Image } from 'phosphor-react';
-import { Message_options } from '../../data';
+import React from "react";
+import { useTheme } from "@mui/material/styles";
+import {
+  Box,
+  Divider,
+  IconButton,
+  Link,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { DotsThreeVertical, DownloadSimple, Image } from "phosphor-react";
+import { Message_options } from "../../data";
 
-
-const DocMsg = ({el,menu}) => {
+const DocMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
-
-     <Box p={1.5} sx={{backgroundColor:el.incoming ? theme.palette.background.default : theme.palette.primary.main,
-            borderRadius:1.5,//1.5*8=>12px,
-            width:"max-content"
-        }}>
-
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8=>12px,
+          width: "max-content",
+        }}
+      >
         <Stack spacing={2}>
-          <Stack p={2} direction={"row"} spacing={3} alignItems={"center"}
-          sx={{backgroundColor:theme.palette.background.paper,borderRadius:1}}>
-
-            <Image size={48}/>
-            <Typography variant='caption'>
-             Abstract.png
-            </Typography>
+          <Stack
+            p={2}
+            direction={"row"}
+            spacing={3}
+            alignItems={"center"}
+            sx={{
+              backgroundColor: theme.palette.background.paper,
+              borderRadius: 1,
+            }}
+          >
+            <Image size={48} />
+            <Typography variant="caption">Abstract.png</Typography>
             <IconButton>
-              <DownloadSimple/>
+              <DownloadSimple />
             </IconButton>
-        </Stack>
-        <Typography variant='body2' color={el.incoming ? theme.palette.text:"#fff"}>
-             {el.message}
-            </Typography>
-        </Stack>
-        </Box>
-        {menu && <MessageOptions/>}
-    </Stack>
-  )
-}
-
-const LinkMsg = ({el,menu}) => {
-  const theme = useTheme();
-  return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
-
-     <Box p={1.5} sx={{backgroundColor:el.incoming ? theme.palette.background.default : theme.palette.primary.main,
-            borderRadius:1.5,//1.5*8=>12px,
-            width:"max-content"
-        }}>
-
-        <Stack spacing={2}>
-          <Stack p={2} spacing={3} alignItems={"center"}
-          sx={{backgroundColor:theme.palette.background.paper,borderRadius:1}}>
-         
-         <img src={el.preview} alt={el.message} style={{maxHeight:210 , borderRadius:"10px"}}/>
-         <Stack spacing={2}>
-         <Typography variant='subtitle2'>
-             Creating Chat App
-            </Typography>
-
-            <Typography variant='subtitle2' sx={{color:theme.palette.primary.main}} 
-            component={Link}
-            to="//https://www.youtube.com/"
-            >
-             www.youtube.com
-            </Typography>
-
-         </Stack>
-         <Typography variant='body2' color={el.incoming ? theme.palette.text:"#fff"}>
-             {el.message}
-            </Typography>
-        </Stack>
-       
-        </Stack>
-        </Box>
-        {menu && <MessageOptions/>}
-    </Stack>
-  )
-}
-
-
-
-const ReplyMsg = ({el,menu}) => {
-  const theme = useTheme();
-  return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
-
-     <Box p={1.5} sx={{backgroundColor:el.incoming ? theme.palette.background.default : theme.palette.primary.main,
-            borderRadius:1.5,//1.5*8=>12px,
-            width:"max-content"
-        }}>
-
-        <Stack spacing={2}>
-          <Stack p={2} direction="column" spacing={3} alignItems={"center"}
-          sx={{backgroundColor:theme.palette.background.paper,borderRadius:1}}>
-
-            <Typography variant='body2' color={theme.palette.text}>
-             {el.message}
-            </Typography>
-            
           </Stack>
-          <Typography variant='body2' color={el.incoming ? theme.palette.text:"#fff"}>
-             {el.reply}
-            </Typography>
-       
+          <Typography
+            variant="body2"
+            color={el.incoming ? theme.palette.text : "#fff"}
+          >
+            {el.message}
+          </Typography>
         </Stack>
-        </Box>
-        {menu && <MessageOptions/>}
+      </Box>
+      {menu && <MessageOptions />}
     </Stack>
-  )
-}
+  );
+};
 
-const MediaMsg = ({el,menu}) => {
+const LinkMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8=>12px,
+          width: "max-content",
+        }}
+      >
+        <Stack spacing={2}>
+          <Stack
+            p={2}
+            spacing={3}
+            alignItems={"center"}
+            sx={{
+              backgroundColor: theme.palette.background.paper,
+              borderRadius: 1,
+            }}
+          >
+            <img
+              src={el.preview}
+              alt={el.message}
+              style={{ maxHeight: 210, borderRadius: "10px" }}
+            />
+            <Stack spacing={2}>
+              <Typography variant="subtitle2">Creating Chat App</Typography>
 
-     <Box p={1.5} sx={{backgroundColor:el.incoming ? theme.palette.background.default : theme.palette.primary.main,
-            borderRadius:1.5,//1.5*8=>12px,
-            width:"max-content"
-        }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: theme.palette.primary.main }}
+                component={Link}
+                to="//https://www.youtube.com/"
+              >
+                www.youtube.com
+              </Typography>
+            </Stack>
+            <Typography
+              variant="body2"
+              color={el.incoming ? theme.palette.text : "#fff"}
+            >
+              {el.message}
+            </Typography>
+          </Stack>
+        </Stack>
+      </Box>
+      {menu && <MessageOptions />}
+    </Stack>
+  );
+};
 
+const ReplyMsg = ({ el, menu }) => {
+  const theme = useTheme();
+  return (
+    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8=>12px,
+          width: "max-content",
+        }}
+      >
+        <Stack spacing={2}>
+          <Stack
+            p={2}
+            direction="column"
+            spacing={3}
+            alignItems={"center"}
+            sx={{
+              backgroundColor: theme.palette.background.paper,
+              borderRadius: 1,
+            }}
+          >
+            <Typography variant="body2" color={theme.palette.text}>
+              {el.message}
+            </Typography>
+          </Stack>
+          <Typography
+            variant="body2"
+            color={el.incoming ? theme.palette.text : "#fff"}
+          >
+            {el.reply}
+          </Typography>
+        </Stack>
+      </Box>
+      {menu && <MessageOptions />}
+    </Stack>
+  );
+};
+
+const MediaMsg = ({ el, menu }) => {
+  const theme = useTheme();
+  return (
+    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8=>12px,
+          width: "max-content",
+        }}
+      >
         <Stack spacing={1}>
-        <img src={el.img} alt={el.message} style={{maxHeight:210 , borderRadius:"10px"}}/>
-        <Typography variant='body2'color={el.incoming ? theme.palette.text : "#fff"} >
+          <img
+            src={el.img}
+            alt={el.message}
+            style={{ maxHeight: 210, borderRadius: "10px" }}
+          />
+          <Typography
+            variant="body2"
+            color={el.incoming ? theme.palette.text : "#fff"}
+          >
+            {el.message}
+          </Typography>
+        </Stack>
+      </Box>
+      {menu && <MessageOptions />}
+    </Stack>
+  );
+};
+
+const TextMsg = ({ el, menu }) => {
+  const theme = useTheme();
+  return (
+    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8=>12px,
+          width: "max-content",
+        }}
+      >
+        <Typography
+          variant="body2"
+          color={el.incoming ? theme.palette.text : "#fff"}
+        >
           {el.message}
         </Typography>
-        </Stack>
-        </Box>
-        {menu && <MessageOptions/>}
-        
-    </Stack>
-  )
-}
-
-const TextMsg = ({el,menu}) => {
-    const theme = useTheme();
-  return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
-        <Box p={1.5} sx={{backgroundColor:el.incoming ? theme.palette.background.default : theme.palette.primary.main,
-            borderRadius:1.5,//1.5*8=>12px,
-            width:"max-content"
-        }}>
-        
-        <Typography variant='body2' color={el.incoming ? theme.palette.text : "#fff"}>
-            {el.message}
-        </Typography>
-        </Box>
+      </Box>
       {/* */}
-      {menu && <MessageOptions/>}
+      {menu && <MessageOptions />}
     </Stack>
-  )
-}
+  );
+};
 
-const Timeline = ({el}) => {
-    const theme=useTheme();
-  return <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
-    <Divider width="46%" />
-    <Typography variant='caption' sx={{color : theme.palette.text}}>{el.text}</Typography>
-    <Divider width="46%" />
-  </Stack>
-}
+const Timeline = ({ el }) => {
+  const theme = useTheme();
+  return (
+    <Stack
+      direction={"row"}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+    >
+      <Divider width="46%" />
+      <Typography variant="caption" sx={{ color: theme.palette.text }}>
+        {el.text}
+      </Typography>
+      <Divider width="46%" />
+    </Stack>
+  );
+};
 
 const MessageOptions = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -170,32 +241,33 @@ const MessageOptions = () => {
     setAnchorEl(null);
   };
 
-return (<>
-       <DotsThreeVertical 
+  return (
+    <>
+      <DotsThreeVertical
         id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
+        aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        size={20}/>
-     <Menu
+        size={20}
+      />
+      <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          "aria-labelledby": "basic-button",
         }}
       >
-        <Stack spacing={1} px={1} >
-        {Message_options.map((el)=>(
-          <MenuItem onClick={handleClick}>{el.title}</MenuItem>
-        ))}
+        <Stack spacing={1} px={1}>
+          {Message_options.map((el) => (
+            <MenuItem onClick={handleClick}>{el.title}</MenuItem>
+          ))}
         </Stack>
-        
       </Menu>
     </>
-)
-}
+  );
+};
 
-export {Timeline,TextMsg ,MediaMsg , ReplyMsg ,LinkMsg ,DocMsg};
+export { Timeline, TextMsg, MediaMsg, ReplyMsg, LinkMsg, DocMsg };
